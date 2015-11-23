@@ -27,10 +27,12 @@ app.use('/users', users);
 
 
 var multer  = require('multer')
-var upload = multer({ dest: './uploads',
+var upload = multer({ dest: 'uploads/' });
+/*
               onFileUploadData:function(file, data, req, res){
                 console.log(data.toString());
               }})
+*/
 
 
 
@@ -44,8 +46,10 @@ app.post('/up', upload.single('avatar'), function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
   console.log(req.file);
+  //console.log(req.avatar)
+  console.log(req.body)
   res.render('index',{title:'done'});
-
+  res.status(204).end();
 })
 
 /*
